@@ -39,3 +39,10 @@ class DealerRulesPlayer(ProtoPlayer):
 
         return 'hit'
 
+# define my player
+
+class MyPlayer(ProtoPlayer):
+
+    def __init__(self, name='Andy'):
+        ProtoPlayer.__init__(self, name)
+
