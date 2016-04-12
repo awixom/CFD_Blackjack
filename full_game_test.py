@@ -2,18 +2,21 @@
 
 import blackjack_base as bj
 import blackjack_base_players as bj_player
+import my_player as mp
 
 # create the players
+
 
 player1 = bj_player.ProtoPlayer(name='Steve')
 player2 = bj_player.ProtoPlayer(name='Jenny')
 player3 = bj_player.DealerRulesPlayer(name='David')
 player4 = bj_player.DealerRulesPlayer(name='Lauren')
-player_list = [player1, player2, player3, player4]
+player5 = mp.MyPlayer('Andy')
+player_list = [player1, player2, player3, player4, player5]
 
 # set table minimum and maximum and the starting funds for each player
 
-table_minimum = 10.0
+table_minimum = 5.0
 table_maximum = 100.0
 starting_funds = 100.0
 
