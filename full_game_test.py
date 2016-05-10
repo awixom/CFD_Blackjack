@@ -3,6 +3,7 @@
 import blackjack_base as bj
 import blackjack_base_players as bj_player
 import aw_player as awp
+import rp_player as rpp
 
 # create the players
 
@@ -10,7 +11,8 @@ import aw_player as awp
 player1 = bj_player.ProtoPlayer(name='Steve')
 player2 = bj_player.DealerRulesPlayer(name='Lauren')
 player3 = awp.HotStreakPlayer('Andy')
-player_list = [player1, player2, player3]
+player4 = rpp.RPPlayer(name='Robert')
+player_list = [player1, player2, player3, player4]
 
 # set table minimum and maximum and the starting funds for each player
 
