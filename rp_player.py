@@ -17,13 +17,16 @@ class RPPlayer(object):
         self.cards_played = 0
 
     def bet(self, current_funds, minimum_bet, maximum_bet):
+        return self._bet_minimum(current_funds, minimum_bet, maximum_bet)
+
+    def _bet_minimum(self, current_funds, minimum_bet, maximum_bet):
         return minimum_bet
 
-    def betx(self, current_funds, minimum_bet, maximum_bet):
+    def _betx(self, current_funds, minimum_bet, maximum_bet):
         mult = self.increase_bet_max_mult if self.count >= self.increase_bet_threshold else 1.0
         return minimum_bet*mult
 
-    def bet_count_full(self, current_funds, minimum_bet, maximum_bet):
+    def _bet_count_full(self, current_funds, minimum_bet, maximum_bet):
         mult = self.count - self.increase_bet_threshold + 2
         if mult <= 0:
             mult = 1.0

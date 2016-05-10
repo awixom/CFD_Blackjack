@@ -27,7 +27,7 @@ game = bj.Game(player_list, table_minimum, table_maximum, starting_funds)
 # play until all players have lost all their money or until maximum number of
 # rounds have been played
 
-num_rounds_max = 500
+num_rounds_max = 100
 
 while game.player_list and game.round_counter < num_rounds_max:
     game.ask_for_bets()
