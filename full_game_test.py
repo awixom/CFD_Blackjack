@@ -10,15 +10,16 @@ import rp_player as rpp
 
 player1 = bj_player.ProtoPlayer(name='Steve')
 player2 = bj_player.DealerRulesPlayer(name='Lauren')
-player3 = awp.HotStreakPlayer('Andy')
-player4 = rpp.RPPlayer(name='Robert')
-player_list = [player1, player2, player3, player4]
+player3 = awp.HotStreakPlayer(name='Andy')
+player4 = awp.BasicStratsPlayer(name='Alex')
+player5 = rpp.RPPlayer(name='Robert')
+player_list = [player1, player2, player3, player4, player5]
 
 # set table minimum and maximum and the starting funds for each player
 
-table_minimum = 5.0
-table_maximum = 10.0
-starting_funds = 100.0
+table_minimum = 25.0
+table_maximum = 100.0
+starting_funds = 1000.0
 
 # initialize game
 
@@ -27,7 +28,7 @@ game = bj.Game(player_list, table_minimum, table_maximum, starting_funds)
 # play until all players have lost all their money or until maximum number of
 # rounds have been played
 
-num_rounds_max = 100
+num_rounds_max = 200
 
 while game.player_list and game.round_counter < num_rounds_max:
     game.ask_for_bets()

@@ -67,4 +67,57 @@ class HotStreakPlayer(bj_players.DealerRulesPlayer):
         self.prev_hand_count += 1
         self.prev_hand_count = self.prev_hand_count % self.num_prev_hands
 
+# add a basic strategy player class
 
+class BasicStratsPlayer(bj_players.ProtoPlayer):
+
+    def play(self, current_hand, current_table):
+
+        # get the dealer card
+
+        dealer_card = current_table['Dealer']
+
+        # first deal with soft totals on two card hands, otherwise use best
+        # score point total
+
+        cards = current_hand.cards
+        if (len(cards) == 2) and ('A' in cards) and (cards != ['A','A']):
+
+            if cards[0] == 'A':
+                other_card = cards[1]
+            else:
+                other_card = cards[0]
+
+            if other_card in ['2','3','4','5','6']:
+                return 'hit'
+            elif other_card == '7':
+                if dealer_card in ['9','10','J','Q','K','A']:
+                    return 'hit'
+                else:
+                    return 'stand'
+            else:
+                return 'stand'
+
+        else:
+
+            best_score = current_hand.best_score()
+            if best_score in ['blackjack', 'bust']:
+                return 'stand'
+            elif best_score >= 5 and best_score <= 11 :
+                return 'hit'
+            elif best_score == 12:
+                if dealer_card in ['4', '5', '6']:
+                    return 'stand'
+                else:
+                    return 'hit'
+            elif best_score >= 14 and best_score <= 16:
+                if dealer_card in ['2', '3', '4', '5', '6']:
+                    return 'stand'
+                else:
+                    return 'hit'
+            else:
+                return 'stand'
+
+        # shouldn't actually make it to here, but if it happens, stand
+
+        return 'stand'
