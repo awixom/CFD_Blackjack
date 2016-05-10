@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 
 # create the players
 
-
 player1 = bj_player.ProtoPlayer(name='Steve')
 player2 = bj_player.DealerRulesPlayer(name='Lauren')
 player3 = awp.HotStreakPlayer(name='Andy')

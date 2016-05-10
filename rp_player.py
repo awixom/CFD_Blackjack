@@ -1,4 +1,5 @@
-# basic player classes
+# this player class was created by Robert Putnam of BU's IS&T Research
+# Computing group
 
 # prototype player class
 
