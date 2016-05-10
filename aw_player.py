@@ -21,7 +21,7 @@ class HotStreakPlayer(bj_players.DealerRulesPlayer):
         # determine bet as a function of how many previous hands won
 
         avg_wins = self.previous_hands.mean()
-        scaled_bet = minimum_bet + (maximum_bet-minimum_bet)*avg_wins
+        scaled_bet = minimum_bet + (max(min(maximum_bet,current_funds),minimum_bet)-minimum_bet)*avg_wins
 
         return scaled_bet
 

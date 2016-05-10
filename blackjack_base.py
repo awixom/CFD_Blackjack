@@ -136,13 +136,15 @@ class Game(object):
         # give each player some initial cash
 
         self.player_funds = dict()
+        self.player_funds_list = dict()
         for player in player_list:
             self.player_funds[player.name] = self.start_funds
+            self.player_funds_list[player.name] = [self.start_funds]
 
     def ask_for_bets(self):
 
         self.round_counter += 1
-        
+
         for player in self.player_list:
             current_funds = self.player_funds[player.name]
             bet = player.bet(current_funds, self.table_min, self.table_max)
@@ -158,7 +160,7 @@ class Game(object):
                 self.player_bets[player.name] = current_funds
             else:
                 self.player_bets[player.name] = bet
-                
+
 
     def deal_starting_cards(self):
 
@@ -259,14 +261,17 @@ class Game(object):
                         self.player_funds[name] -= bet  # lose
                     else:
                         pass  # push
-            
+
             # if player has lost all funds, remove them from play
-            
+
             if self.player_funds[name] <= 0.0:
                 self.player_rounds_played[name] = self.round_counter
                 new_player_list = [x for x in self.player_list \
                                    if x is not player]
                 self.player_list = new_player_list
+                self.player_funds_list[name].append(0.0)
+            else:
+                self.player_funds_list[name].append(self.player_funds[name])
 
     def final_look_at_table(self):
 
